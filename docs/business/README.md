@@ -1,4 +1,4 @@
-📚![books](../assets/book.png) Sistema de Gerenciamento de biblioteca
+📚 Sistema de Gerenciamento de biblioteca
 =========
 
 Sistema de gerenciamento de biblioteca.
