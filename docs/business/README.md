@@ -1,6 +1,9 @@
-# Regras de negócio
+📚![books](../assets/book.png) Sistema de Gerenciamento de biblioteca
+=========
 
 Sistema de gerenciamento de biblioteca.
+
+## Regras de negócio
 
 1. Eu, como Bibliotecário, desejo cadastrar uma pessoa.
 
