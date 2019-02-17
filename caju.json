@@ -1,0 +1,9 @@
+{
+	"origin": "https://github.com/ivanpaulovich/acerola-hexagonal-architecture",
+	"architecture-style": "hexagonal",		
+	"use-cases": "none",
+	"user-interface": "webapi",
+	"data-access": "entityframework",
+	"tips": "True",
+	"skip-restore": "False"
+}
