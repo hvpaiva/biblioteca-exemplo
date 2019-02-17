@@ -1,7 +1,8 @@
 ## Ports
-An Port is an way an Actor can interact with the Application Layer. The role of the Port is to translate the Actor's input into structures the Application Services can understand. For instance an Port could be an Web Application, an Console App or a Batch Script. I need to point out that the Actor could be an real user or another system.
 
-For this article the Port supports the REST protocol and was implemented using WebApi framework.
+Uma Port é uma maneira que um ator pode interagir com a camada de aplicação. O papel das Ports é traduzir a entrada do Ator em estruturas que o Application Services possa entender. Por exemplo, uma porta pode ser um aplicativo da Web, um aplicativo de console ou um script em lote. Eu preciso ressaltar que o ator poderia ser um usuário real ou outro sistema.
+
+Para este artigo, o Port suporta o protocolo REST e foi implementado usando o framework WebApi.
 
 ```
 [Route("api/[controller]")]
@@ -46,8 +47,11 @@ public class AccountsController : Controller
 
 The WebApi has Controllers that dot not depends on Application Services implementation details, its easy to mock this services. In an Enterprise Application we use to have multiple Ports.
 
+O Web Api possui Controllers que não dependem dos detalhes de implementação do Application Services, é fácil burlar esses serviços. Em um aplicativo corporativo, usamos várias portas.
+
 ## Port Components
-We design components in a Port segregated by use cases:
+
+Nós separamos em Port por casos de uso, por exemplo, o caso de uso de depósito teria um diretório de `Deposit` com os seguintes arquivos:
 
 * Request (DepositRequest)
 * Controller + Action (DepositController)
