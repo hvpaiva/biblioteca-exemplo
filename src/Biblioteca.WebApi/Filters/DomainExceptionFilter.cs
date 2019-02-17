@@ -10,14 +10,11 @@
     {
         public void OnException(ExceptionContext context)
         {
-            DomainException domainException = context.Exception as DomainException;
-            if (domainException != null)
-            {
-                string json = JsonConvert.SerializeObject(domainException.BusinessMessage);
+            if (!(context.Exception is DomainException domainException)) return;
+            var json = JsonConvert.SerializeObject(domainException.BusinessMessage);
 
-                context.Result = new BadRequestObjectResult(json);
-                context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-            }
+            context.Result = new BadRequestObjectResult(json);
+            context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
         }
     }
 }

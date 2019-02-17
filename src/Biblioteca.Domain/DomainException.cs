@@ -2,7 +2,7 @@
 {
     public class DomainException : BibliotecaException
     {
-        public string BusinessMessage { get; private set; }
+        public string BusinessMessage { get; }
 
         public DomainException(string businessMessage)
         {

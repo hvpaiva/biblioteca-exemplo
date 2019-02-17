@@ -4,7 +4,7 @@
 
     public class BibliotecaException : Exception
     {
-        public BibliotecaException()
+        protected BibliotecaException()
         { }
 
         public BibliotecaException(string message)
