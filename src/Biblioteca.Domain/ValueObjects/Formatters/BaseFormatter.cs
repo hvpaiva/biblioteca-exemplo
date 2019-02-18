@@ -33,7 +33,10 @@ namespace Biblioteca.Domain.ValueObjects.Formatters
         /// <inheritdoc />
         public virtual string Format(string valor)
         {
-            if (string.IsNullOrEmpty(valor)) throw new ArgumentException(nameof(valor));
+            if (string.IsNullOrEmpty(valor)) throw new ArgumentException("Valor não pode ser vazio ou nulo.");
+
+            if (!_unformatted.IsMatch(valor) && !_formatted.IsMatch(valor))
+                throw new ValueObjectException("Formato de inválido.");
 
             return IsFormatted(valor) ? valor : _unformatted.Replace(valor, _formattedReplacement);
         }
@@ -41,7 +44,10 @@ namespace Biblioteca.Domain.ValueObjects.Formatters
         /// <inheritdoc />
         public virtual string Unformat(string valor)
         {
-            if (string.IsNullOrEmpty(valor)) throw new ArgumentException(nameof(valor));
+            if (string.IsNullOrEmpty(valor)) throw new ArgumentException("Valor não pode ser vazio ou nulo.");
+
+            if (!_unformatted.IsMatch(valor) && !_formatted.IsMatch(valor))
+                throw new ValueObjectException("Formato de inválido.");
 
             return IsNotFormatted(valor) ? valor : _formatted.Replace(valor, _unformattedReplacement);
         }
@@ -49,7 +55,7 @@ namespace Biblioteca.Domain.ValueObjects.Formatters
         /// <inheritdoc />
         public virtual bool IsFormatted(string valor)
         {
-            if (string.IsNullOrEmpty(valor)) throw new ArgumentException(nameof(valor));
+            if (string.IsNullOrEmpty(valor)) throw new ArgumentException("Valor não pode ser vazio ou nulo.");
 
             return _formatted.IsMatch(valor);
         }
@@ -57,7 +63,7 @@ namespace Biblioteca.Domain.ValueObjects.Formatters
         /// <inheritdoc />
         public virtual bool IsNotFormatted(string valor)
         {
-            if (string.IsNullOrEmpty(valor)) throw new ArgumentException(nameof(valor));
+            if (string.IsNullOrEmpty(valor)) throw new ArgumentException("Valor não pode ser vazio ou nulo.");
 
             return _unformatted.IsMatch(valor);
         }
