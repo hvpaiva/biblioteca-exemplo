@@ -3,6 +3,7 @@ using Biblioteca.Domain.ValueObjects.Formats;
 
 namespace Biblioteca.Domain.ValueObjects.Formatters
 {
+    /// <inheritdoc />
     /// <summary>
     ///     Formatador de CPF.
     ///     Formata e Desformata uma string para os padrões de CPF.

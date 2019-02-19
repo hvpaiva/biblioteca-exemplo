@@ -3,15 +3,31 @@ using System.Text.RegularExpressions;
 
 namespace Biblioteca.Domain.ValueObjects.Formatters
 {
+    /// <inheritdoc />
     /// <summary>
     ///     Formatador base de string.
     ///     Recebe pelo construtor os padrões de formatação.
     /// </summary>
     public abstract class BaseFormatter : IFormatter<string>
     {
+        /// <summary>
+        ///     Padrão formatado.
+        /// </summary>
         private readonly Regex _formatted;
+
+        /// <summary>
+        ///     Padrão formatado com modelo para replacement.
+        /// </summary>
         private readonly string _formattedReplacement;
+
+        /// <summary>
+        ///     Padrão desformatado.
+        /// </summary>
         private readonly Regex _unformatted;
+
+        /// <summary>
+        ///     Padrão desformatado com modelo para replacement.
+        /// </summary>
         private readonly string _unformattedReplacement;
 
         /// <summary>
