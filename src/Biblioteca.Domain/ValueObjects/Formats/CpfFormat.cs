@@ -1,9 +1,9 @@
-namespace Biblioteca.Domain.Tests.ValueObjects.Formats
+namespace Biblioteca.Domain.ValueObjects.Formats
 {
     /// <summary>
     ///     Formatos de CPF.
     /// </summary>
-    public class CpfFormat
+    public static class CpfFormat
     {
         /// <summary>
         ///     CPF formatado.

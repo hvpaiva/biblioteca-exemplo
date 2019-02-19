@@ -1,23 +1,24 @@
-﻿namespace Biblioteca.WebApi
-{
-    using Biblioteca.WebApi.Filters;
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.Extensions.Configuration;
-    using System.IO;
-    using System.Reflection;
-    using Autofac.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Autofac;
+﻿using System.IO;
+using System.Reflection;
+using Autofac;
+using Autofac.Configuration;
+using Biblioteca.WebApi.Filters;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 
+namespace Biblioteca.WebApi
+{
     public class Startup
     {
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-        
-        public IConfiguration Configuration { get; }
+
+        private IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -25,9 +26,9 @@
             {
                 options.AddPolicy("CorsPolicy",
                     builder => builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials());
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials());
             });
 
             services.AddMvc(options =>
@@ -45,7 +46,7 @@
                         Assembly.GetEntryAssembly().Location,
                         "xml"));
 
-                options.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info
+                options.SwaggerDoc("v1", new Info
                 {
                     Title = Configuration["App:Title"],
                     Version = Configuration["App:Version"],
@@ -64,20 +65,14 @@
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
             app.UseCors("CorsPolicy");
 
             app.UseMvc();
 
             app.UseSwagger()
-               .UseSwaggerUI(c =>
-               {
-                   c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-               });
+                .UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"); });
         }
     }
 }

@@ -1,21 +1,21 @@
-﻿namespace Biblioteca.WebApi
-{
-    using Microsoft.AspNetCore;
-    using Microsoft.AspNetCore.Hosting;
-    using Autofac.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Configuration;
-    using Serilog;
-    using Serilog.Events;
-    using System.IO;
+﻿using System.IO;
+using Autofac.Extensions.DependencyInjection;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Serilog;
+using Serilog.Events;
 
-    public class Program
+namespace Biblioteca.WebApi
+{
+    public static class Program
     {
         public static void Main(string[] args)
         {
             BuildWebHost(args).Run();
         }
 
-        public static IWebHost BuildWebHost(string[] args)
+        private static IWebHost BuildWebHost(string[] args)
         {
             return WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()

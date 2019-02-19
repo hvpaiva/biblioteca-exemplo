@@ -1,6 +1,6 @@
 namespace Biblioteca.Domain.ValueObjects.Validators.Errors
 {
-    public class CpfError
+    public static class CpfError
     {
         public const string InvalidFormat = "Formato inválido.";
         public const string NullOrEmpty = "Cpf nulo ou vazio.";

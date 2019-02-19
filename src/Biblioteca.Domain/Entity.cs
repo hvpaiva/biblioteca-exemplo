@@ -1,9 +1,9 @@
-﻿namespace Biblioteca.Domain
-{
-    using System;
+﻿using System;
 
+namespace Biblioteca.Domain
+{
     public class Entity : IEntity
     {
-        public virtual Guid Id { get; protected set; } = Guid.NewGuid();
+        public virtual Guid Id { get; } = Guid.NewGuid();
     }
 }
