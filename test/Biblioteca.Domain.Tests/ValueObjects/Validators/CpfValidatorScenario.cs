@@ -32,16 +32,16 @@ namespace Biblioteca.Domain.Tests.ValueObjects.Validators
         public void Valid_Cpf_In_IsValid(string cpf, IValidator<string> validator, bool isValid)
         {
             $"Dado um CPF válido: {cpf}"
-                .x(() => { });
+                .Do(() => { });
 
             "E o validator de CPF,"
-                .x(() => validator = new CpfValidator());
+                .Do(() => validator = new CpfValidator());
 
             "Quando testo se o CPF é válido,"
-                .x(() => isValid = validator.IsValid(cpf));
+                .Do(() => isValid = validator.IsValid(cpf));
 
             "O resultado deve ser verdadeiro."
-                .x(() => isValid.Should().BeTrue());
+                .Do(() => isValid.Should().BeTrue());
         }
 
         // Cenário 2:
@@ -55,16 +55,16 @@ namespace Biblioteca.Domain.Tests.ValueObjects.Validators
         public void Invalid_Cpf_In_IsValid(string cpf, IValidator<string> validator, bool isValid)
         {
             $"Dado o CPF inválido: {cpf}"
-                .x(() => { });
+                .Do(() => { });
 
             "E o validator de CPF,"
-                .x(() => validator = new CpfValidator());
+                .Do(() => validator = new CpfValidator());
 
             "Quando testo se o CPF é válido,"
-                .x(() => isValid = validator.IsValid(cpf));
+                .Do(() => isValid = validator.IsValid(cpf));
 
             "O resultado deve ser falso."
-                .x(() => isValid.Should().BeFalse());
+                .Do(() => isValid.Should().BeFalse());
         }
 
         // Cenário 3:
@@ -76,13 +76,13 @@ namespace Biblioteca.Domain.Tests.ValueObjects.Validators
         public void Valid_Cpf_In_AssertValid(string cpf, IValidator<string> validator)
         {
             $"Dado um CPF válido: {cpf}"
-                .x(() => { });
+                .Do(() => { });
 
             "E o validator de CPF,"
-                .x(() => validator = new CpfValidator());
+                .Do(() => validator = new CpfValidator());
 
             "Quando valido se o CPF é válido, não pode lançar exceção."
-                .x(() => validator.Invoking(v => v.AssertValid(cpf))
+                .Do(() => validator.Invoking(v => v.AssertValid(cpf))
                     .Should()
                     .NotThrow<ValueObjectException>());
         }
@@ -102,13 +102,13 @@ namespace Biblioteca.Domain.Tests.ValueObjects.Validators
         public void Invalid_Cpf_In_AssertValid(string cpf, string message, IValidator<string> validator)
         {
             $"Dado um CPF inválido: {cpf}"
-                .x(() => { });
+                .Do(() => { });
 
             "E o validator de CPF,"
-                .x(() => validator = new CpfValidator());
+                .Do(() => validator = new CpfValidator());
 
             $"Quando valido se o CPF é válido, deve lançar exceção com a seguinte mensagem: {message}."
-                .x(() => validator.Invoking(val => val.AssertValid(cpf))
+                .Do(() => validator.Invoking(val => val.AssertValid(cpf))
                     .Should()
                     .Throw<ValueObjectException>()
                     .WithMessage(message));
@@ -127,16 +127,16 @@ namespace Biblioteca.Domain.Tests.ValueObjects.Validators
             string[] expectedMessage, IValidator<string> validator, List<string> messages)
         {
             $"Dado um CPF inválido: {cpf}"
-                .x(() => { });
+                .Do(() => { });
 
             "E o validator de CPF"
-                .x(() => validator = new CpfValidator());
+                .Do(() => validator = new CpfValidator());
 
             "Buscar mensagens de erro desse CPF"
-                .x(() => messages = validator.GetInvalidMessage(cpf));
+                .Do(() => messages = validator.GetInvalidMessage(cpf));
 
             $"Que devem ser: {expectedMessage}."
-                .x(() => messages.Should().Equal(expectedMessage));
+                .Do(() => messages.Should().Equal(expectedMessage));
         }
 
         // Cenário 6:
@@ -149,16 +149,16 @@ namespace Biblioteca.Domain.Tests.ValueObjects.Validators
             List<string> messages)
         {
             $"Dado um CPF válido: {cpf}"
-                .x(() => { });
+                .Do(() => { });
 
             "E o validator de CPF"
-                .x(() => validator = new CpfValidator());
+                .Do(() => validator = new CpfValidator());
 
             "Buscar mensagens de erro desse CPF"
-                .x(() => messages = validator.GetInvalidMessage(cpf));
+                .Do(() => messages = validator.GetInvalidMessage(cpf));
 
             "Que deve ser vazia."
-                .x(() => messages.Should().BeEmpty());
+                .Do(() => messages.Should().BeEmpty());
         }
     }
 }

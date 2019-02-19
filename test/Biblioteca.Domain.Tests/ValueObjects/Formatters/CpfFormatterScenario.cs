@@ -75,16 +75,16 @@ namespace Biblioteca.Domain.Tests.ValueObjects.Formatters
             string formattedCpf, IFormatter<string> formatter)
         {
             $"Dado um CPF desformatado: {cpf}"
-                .x(() => { });
+                .Do(() => { });
 
             "E o formatador de CPF"
-                .x(() => formatter = new CpfFormatter());
+                .Do(() => formatter = new CpfFormatter());
 
             "Quando usamos o formatador para formatar o CPF"
-                .x(() => formattedCpf = formatter.Format(cpf));
+                .Do(() => formattedCpf = formatter.Format(cpf));
 
             "Deve vir formatado"
-                .x(() => formattedCpf.Should().Be(expectedCpf));
+                .Do(() => formattedCpf.Should().Be(expectedCpf));
         }
 
         // Cenário 3:
@@ -97,16 +97,16 @@ namespace Biblioteca.Domain.Tests.ValueObjects.Formatters
             string unformattedCpf, IFormatter<string> formatter)
         {
             $"Dado um CPF formatado: {cpf}"
-                .x(() => { });
+                .Do(() => { });
 
             "E o formatador de CPF"
-                .x(() => formatter = new CpfFormatter());
+                .Do(() => formatter = new CpfFormatter());
 
             "Quando usamos o formatador para desformatar o CPF"
-                .x(() => unformattedCpf = formatter.Unformat(cpf));
+                .Do(() => unformattedCpf = formatter.Unformat(cpf));
 
             "Deve vir desformatado"
-                .x(() => unformattedCpf.Should().Be(expectedCpf));
+                .Do(() => unformattedCpf.Should().Be(expectedCpf));
         }
 
         // Cenário 4:
@@ -119,16 +119,16 @@ namespace Biblioteca.Domain.Tests.ValueObjects.Formatters
             string expectedCpf, string unformattedCpf, IFormatter<string> formatter)
         {
             $"Dado um CPF desformatado: {cpf}"
-                .x(() => { });
+                .Do(() => { });
 
             "E o formatador de CPF"
-                .x(() => formatter = new CpfFormatter());
+                .Do(() => formatter = new CpfFormatter());
 
             "Quando usamos o formatador para desformatar o CPF"
-                .x(() => unformattedCpf = formatter.Unformat(cpf));
+                .Do(() => unformattedCpf = formatter.Unformat(cpf));
 
             "Deve vir desformatado"
-                .x(() => unformattedCpf.Should().Be(expectedCpf));
+                .Do(() => unformattedCpf.Should().Be(expectedCpf));
         }
 
         // Cenário 5:
@@ -141,13 +141,13 @@ namespace Biblioteca.Domain.Tests.ValueObjects.Formatters
             IFormatter<string> formatter)
         {
             $"Dado um CPF null ou vazio: {cpf}"
-                .x(() => { });
+                .Do(() => { });
 
             "E o formatador de CPF"
-                .x(() => formatter = new CpfFormatter());
+                .Do(() => formatter = new CpfFormatter());
 
             "Quando usamos o formatador para formatar o CPF, deve lançar uma exceção."
-                .x(() => formatter.Invoking(f => f.Format(cpf))
+                .Do(() => formatter.Invoking(f => f.Format(cpf))
                     .Should()
                     .Throw<ArgumentException>()
                     .WithMessage(message));
@@ -163,13 +163,13 @@ namespace Biblioteca.Domain.Tests.ValueObjects.Formatters
             IFormatter<string> formatter)
         {
             $"Dado um CPF null ou vazio: {cpf}"
-                .x(() => { });
+                .Do(() => { });
 
             "E o formatador de CPF"
-                .x(() => formatter = new CpfFormatter());
+                .Do(() => formatter = new CpfFormatter());
 
             "Quando usamos o formatador para desformatar o CPF, deve lançar uma exceção."
-                .x(() => formatter.Invoking(f => f.Format(cpf))
+                .Do(() => formatter.Invoking(f => f.Format(cpf))
                     .Should()
                     .Throw<ArgumentException>()
                     .WithMessage(message));
@@ -185,13 +185,13 @@ namespace Biblioteca.Domain.Tests.ValueObjects.Formatters
             IFormatter<string> formatter)
         {
             $"Dado um CPF null ou vazio: {cpf}"
-                .x(() => { });
+                .Do(() => { });
 
             "E o formatador de CPF"
-                .x(() => formatter = new CpfFormatter());
+                .Do(() => formatter = new CpfFormatter());
 
             "Quando checamos se o CPF está formatado, deve lançar uma exceção."
-                .x(() => formatter.Invoking(f => f.IsFormatted(cpf))
+                .Do(() => formatter.Invoking(f => f.IsFormatted(cpf))
                     .Should()
                     .Throw<ArgumentException>()
                     .WithMessage(message));
@@ -207,13 +207,13 @@ namespace Biblioteca.Domain.Tests.ValueObjects.Formatters
             IFormatter<string> formatter)
         {
             $"Dado um CPF null ou vazio: {cpf}"
-                .x(() => { });
+                .Do(() => { });
 
             "E o formatador de CPF"
-                .x(() => formatter = new CpfFormatter());
+                .Do(() => formatter = new CpfFormatter());
 
             "Quando checamos se o CPF está desformatado, deve lançar uma exceção."
-                .x(() => formatter.Invoking(f => f.IsNotFormatted(cpf))
+                .Do(() => formatter.Invoking(f => f.IsNotFormatted(cpf))
                     .Should()
                     .Throw<ArgumentException>()
                     .WithMessage(message));
@@ -228,13 +228,13 @@ namespace Biblioteca.Domain.Tests.ValueObjects.Formatters
         public void Formatted_Cpf_Should_Be_True_In_IsFormatted(string cpf, IFormatter<string> formatter)
         {
             $"Dado um CPF formatado: {cpf}"
-                .x(() => { });
+                .Do(() => { });
 
             "E o formatador de CPF"
-                .x(() => formatter = new CpfFormatter());
+                .Do(() => formatter = new CpfFormatter());
 
             "Quando checamos so o CPF está formatado, deve retornar verdadeiro."
-                .x(() => formatter.IsFormatted(cpf).Should().BeTrue());
+                .Do(() => formatter.IsFormatted(cpf).Should().BeTrue());
         }
 
         // Cenário 10:
@@ -246,13 +246,13 @@ namespace Biblioteca.Domain.Tests.ValueObjects.Formatters
         public void Formatted_Cpf_Should_Be_False_In_IsNotFormatted(string cpf, IFormatter<string> formatter)
         {
             $"Dado um CPF formatado: {cpf}"
-                .x(() => { });
+                .Do(() => { });
 
             "E o formatador de CPF"
-                .x(() => formatter = new CpfFormatter());
+                .Do(() => formatter = new CpfFormatter());
 
             "Quando checamos so o CPF está desformatado, deve retornar falso."
-                .x(() => formatter.IsNotFormatted(cpf).Should().BeFalse());
+                .Do(() => formatter.IsNotFormatted(cpf).Should().BeFalse());
         }
 
         // Cenário 11:
@@ -264,13 +264,13 @@ namespace Biblioteca.Domain.Tests.ValueObjects.Formatters
         public void Unformatted_Cpf_Should_Be_False_In_IsFormatted(string cpf, IFormatter<string> formatter)
         {
             $"Dado um CPF desformatado: {cpf}"
-                .x(() => { });
+                .Do(() => { });
 
             "E o formatador de CPF"
-                .x(() => formatter = new CpfFormatter());
+                .Do(() => formatter = new CpfFormatter());
 
             "Quando checamos so o CPF está formatado, deve retornar falso."
-                .x(() => formatter.IsFormatted(cpf).Should().BeFalse());
+                .Do(() => formatter.IsFormatted(cpf).Should().BeFalse());
         }
 
         // Cenário 12:
@@ -282,13 +282,13 @@ namespace Biblioteca.Domain.Tests.ValueObjects.Formatters
         public void Unformatted_Cpf_Should_Be_True_In_IsNotFormatted(string cpf, IFormatter<string> formatter)
         {
             $"Dado um CPF desformatado: {cpf}"
-                .x(() => { });
+                .Do(() => { });
 
             "E o formatador de CPF"
-                .x(() => formatter = new CpfFormatter());
+                .Do(() => formatter = new CpfFormatter());
 
             "Quando checamos so o CPF está desformatado, deve retornar verdadeiro."
-                .x(() => formatter.IsNotFormatted(cpf).Should().BeTrue());
+                .Do(() => formatter.IsNotFormatted(cpf).Should().BeTrue());
         }
 
         // Cenário 13:
@@ -303,13 +303,13 @@ namespace Biblioteca.Domain.Tests.ValueObjects.Formatters
             IFormatter<string> formatter)
         {
             $"Dado um CPF com formato inválido: {cpf}"
-                .x(() => { });
+                .Do(() => { });
 
             "E o formatador de CPF"
-                .x(() => formatter = new CpfFormatter());
+                .Do(() => formatter = new CpfFormatter());
 
             "Quando usamos o formatador para formatar o CPF, deve lançar uma exceção."
-                .x(() => formatter.Invoking(f => f.Format(cpf))
+                .Do(() => formatter.Invoking(f => f.Format(cpf))
                     .Should()
                     .Throw<ValueObjectException>()
                     .WithMessage(message));
@@ -327,13 +327,13 @@ namespace Biblioteca.Domain.Tests.ValueObjects.Formatters
             IFormatter<string> formatter)
         {
             $"Dado um CPF com formato inválido: {cpf}"
-                .x(() => { });
+                .Do(() => { });
 
             "E o formatador de CPF"
-                .x(() => formatter = new CpfFormatter());
+                .Do(() => formatter = new CpfFormatter());
 
             "Quando usamos o formatador para formatar o CPF, deve lançar uma exceção."
-                .x(() => formatter.Invoking(f => f.Unformat(cpf))
+                .Do(() => formatter.Invoking(f => f.Unformat(cpf))
                     .Should()
                     .Throw<ValueObjectException>()
                     .WithMessage(message));
@@ -350,13 +350,13 @@ namespace Biblioteca.Domain.Tests.ValueObjects.Formatters
         public void Invalid_Format_Cpf_Should_Be_False_In_IsFormatted(string cpf, IFormatter<string> formatter)
         {
             $"Dado um CPF com formato inválido: {cpf}"
-                .x(() => { });
+                .Do(() => { });
 
             "E o formatador de CPF"
-                .x(() => formatter = new CpfFormatter());
+                .Do(() => formatter = new CpfFormatter());
 
             "Quando checamos se o CPF está formatado, deve retornar falso."
-                .x(() => formatter.IsFormatted(cpf).Should().BeFalse());
+                .Do(() => formatter.IsFormatted(cpf).Should().BeFalse());
         }
 
         // Cenário 16:
@@ -370,13 +370,13 @@ namespace Biblioteca.Domain.Tests.ValueObjects.Formatters
         public void Invalid_Format_Cpf_Should_Be_False_In_IsNotFormatted(string cpf, IFormatter<string> formatter)
         {
             $"Dado um CPF com formato inválido: {cpf}"
-                .x(() => { });
+                .Do(() => { });
 
             "E o formatador de CPF"
-                .x(() => formatter = new CpfFormatter());
+                .Do(() => formatter = new CpfFormatter());
 
             "Quando checamos se o CPF está formatado, deve retornar falso."
-                .x(() => formatter.IsNotFormatted(cpf).Should().BeFalse());
+                .Do(() => formatter.IsNotFormatted(cpf).Should().BeFalse());
         }
     }
 }
