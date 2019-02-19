@@ -8,9 +8,5 @@
     <ProjectReference Include="..\Biblioteca.Domain\Biblioteca.Domain.csproj" />
   </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="StyleCop.MSBuild" Version="5.0.0"/>
-    </ItemGroup>
-
 
 </Project>
